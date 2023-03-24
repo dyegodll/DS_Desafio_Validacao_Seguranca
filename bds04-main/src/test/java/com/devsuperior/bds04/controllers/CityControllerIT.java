@@ -47,7 +47,7 @@ public class CityControllerIT {
 		adminPassword = "123456";
 	}
 
-	@Test
+	@Test //ok!
 	public void insertShouldReturn401WhenNoUserLogged() throws Exception {
 
 		CityDTO dto = new CityDTO(null, "Recife");
