@@ -80,7 +80,7 @@ public class CityControllerIT {
 		result.andExpect(status().isForbidden());
 	}
 	
-	@Test
+	@Test //ok!
 	public void insertShouldInsertResourceWhenAdminLoggedAndCorrectData() throws Exception {
 
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, adminUsername, adminPassword);
@@ -100,7 +100,7 @@ public class CityControllerIT {
 		result.andExpect(jsonPath("$.name").value("Recife"));
 	}
 
-	@Test
+	@Test //ok!
 	public void insertShouldReturn422WhenAdminLoggedAndBlankName() throws Exception {
 
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, adminUsername, adminPassword);
