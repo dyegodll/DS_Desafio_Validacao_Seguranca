@@ -120,7 +120,7 @@ public class CityControllerIT {
 		result.andExpect(jsonPath("$.errors[0].message").value("Campo requerido"));
 	}
 
-	@Test
+	@Test // ok no Postman!
 	public void findAllShouldReturnAllResourcesSortedByName() throws Exception {
 		
 		ResultActions result =

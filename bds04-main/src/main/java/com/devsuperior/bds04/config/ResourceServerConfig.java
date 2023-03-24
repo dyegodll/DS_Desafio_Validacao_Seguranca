@@ -26,8 +26,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	
 	private static final String[] CLIENT_OR_ADMIN = {"/cities/**"};
 
-	private static final String[] ADMIN = {"/users/**"};
-	
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
 		resources.tokenStore(tokenStore);
@@ -38,8 +36,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		http.authorizeRequests()
 				.antMatchers(PUBLIC).permitAll()
 					.antMatchers(HttpMethod.GET, CLIENT_OR_ADMIN).hasAnyRole("CLIENT","ADMIN")
-					.antMatchers(HttpMethod.POST, CLIENT_OR_ADMIN).hasRole("ADMIN")
-								.anyRequest().authenticated();
+					.antMatchers(HttpMethod.POST, CLIENT_OR_ADMIN).hasAnyRole("ADMIN")
+								.anyRequest().hasRole("ADMIN");
 		
 		//BANCO-H2 CONSOLE
 		if(Arrays.asList(env.getActiveProfiles()).contains("test")) {
