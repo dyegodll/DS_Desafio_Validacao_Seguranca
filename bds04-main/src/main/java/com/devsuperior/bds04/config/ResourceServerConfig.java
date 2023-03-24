@@ -38,6 +38,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		http.authorizeRequests()
 				.antMatchers(PUBLIC).permitAll()
 					.antMatchers(HttpMethod.GET, CLIENT_OR_ADMIN).hasAnyRole("CLIENT","ADMIN")
+					.antMatchers(HttpMethod.POST, CLIENT_OR_ADMIN).hasRole("ADMIN")
 								.anyRequest().authenticated();
 		
 		//BANCO-H2 CONSOLE

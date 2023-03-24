@@ -62,7 +62,7 @@ public class CityControllerIT {
 		result.andExpect(status().isUnauthorized());
 	}
 	
-	@Test
+	@Test //ok!
 	public void insertShouldReturn403WhenClientLogged() throws Exception {
 
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, clientUsername, clientPassword);
