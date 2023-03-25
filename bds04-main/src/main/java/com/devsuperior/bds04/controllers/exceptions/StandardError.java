@@ -3,7 +3,6 @@ package com.devsuperior.bds04.controllers.exceptions;
 import java.io.Serializable;
 import java.time.Instant;
 
-//classe que tem os parâmetros do erro da requisição, usada para manipular a resposta tratada (ex: erro 404)
 public class StandardError implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

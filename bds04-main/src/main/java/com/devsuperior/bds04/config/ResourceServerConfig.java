@@ -24,7 +24,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	
 	private static final String[] PUBLIC = {"/oauth/token","/h2-console/**"};
 	
-	private static final String[] CLIENT_OR_ADMIN = {"/cities/**"};
+	private static final String[] CLIENT_OR_ADMIN = {"/cities","/events"};
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -35,8 +35,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers(PUBLIC).permitAll()
-					.antMatchers(HttpMethod.GET, CLIENT_OR_ADMIN).hasAnyRole("CLIENT","ADMIN")
-					.antMatchers(HttpMethod.POST, CLIENT_OR_ADMIN).hasAnyRole("ADMIN")
+					.antMatchers(HttpMethod.GET, CLIENT_OR_ADMIN).permitAll()
+					.antMatchers(HttpMethod.POST, "/events").hasAnyRole("ADMIN", "CLIENT")
 								.anyRequest().hasRole("ADMIN");
 		
 		//BANCO-H2 CONSOLE

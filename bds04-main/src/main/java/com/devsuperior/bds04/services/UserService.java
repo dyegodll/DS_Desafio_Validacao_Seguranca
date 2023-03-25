@@ -13,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,7 +67,7 @@ public class UserService implements UserDetailsService, Serializable {
 		entity.getRoles().clear();
 		
 		for(RoleDTO roleDto : dto.getRoles()) {
-			Role role = roleRepository.getOne(roleDto.getId());
+			Role role = roleRepository.getReferenceById(roleDto.getId());
 			entity.getRoles().add(role);
 		}
 	}

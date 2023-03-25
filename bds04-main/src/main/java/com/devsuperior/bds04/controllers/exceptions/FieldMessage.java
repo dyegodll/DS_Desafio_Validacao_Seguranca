@@ -2,12 +2,11 @@ package com.devsuperior.bds04.controllers.exceptions;
 
 import java.io.Serializable;
 
-//Objeto para salvar os erros de validação dos campos específicos
 public class FieldMessage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String fieldName; //nome do campo com erro
-	private String message; // mensagem de erro do campo associado
+	private String fieldName; 
+	private String message; 
 
 	public FieldMessage() {
 	}

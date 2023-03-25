@@ -47,7 +47,7 @@ public class CityControllerIT {
 		adminPassword = "123456";
 	}
 
-	@Test //ok!
+	@Test 
 	public void insertShouldReturn401WhenNoUserLogged() throws Exception {
 
 		CityDTO dto = new CityDTO(null, "Recife");
@@ -62,7 +62,7 @@ public class CityControllerIT {
 		result.andExpect(status().isUnauthorized());
 	}
 	
-	@Test //ok!
+	@Test 
 	public void insertShouldReturn403WhenClientLogged() throws Exception {
 
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, clientUsername, clientPassword);
@@ -80,7 +80,7 @@ public class CityControllerIT {
 		result.andExpect(status().isForbidden());
 	}
 	
-	@Test //ok!
+	@Test 
 	public void insertShouldInsertResourceWhenAdminLoggedAndCorrectData() throws Exception {
 
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, adminUsername, adminPassword);
@@ -100,7 +100,7 @@ public class CityControllerIT {
 		result.andExpect(jsonPath("$.name").value("Recife"));
 	}
 
-	@Test //ok!
+	@Test 
 	public void insertShouldReturn422WhenAdminLoggedAndBlankName() throws Exception {
 
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, adminUsername, adminPassword);
@@ -120,7 +120,7 @@ public class CityControllerIT {
 		result.andExpect(jsonPath("$.errors[0].message").value("Campo requerido"));
 	}
 
-	@Test // ok no Postman!
+	@Test
 	public void findAllShouldReturnAllResourcesSortedByName() throws Exception {
 		
 		ResultActions result =

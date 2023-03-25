@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-//classe que complementa o StandardError com uma lista dos erros de validação 
 public class ValidationError extends StandardError implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -14,7 +13,7 @@ public class ValidationError extends StandardError implements Serializable {
 		return errors;
 	}
 	
-	//método para adicionar erros na lista
+	//adiciona erros na lista
 	public void addError(String fieldName, String message) {
 		errors.add(new FieldMessage(fieldName, message));
 	}
